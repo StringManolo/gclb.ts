@@ -1,2 +1,2 @@
 dist/** linguist-detectable=false
-src/**.ts linguist-language=TypeScript
+*.ts linguist-language=TypeScript
