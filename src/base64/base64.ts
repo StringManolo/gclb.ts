@@ -1,4 +1,5 @@
-#!/usr/bin/env node
+// @ts-shebang
+import minimist from "minimist";
 import getPippedInput from "../_libs/getPippedInput";
 import loadFile from "../_libs/loadFile";
 

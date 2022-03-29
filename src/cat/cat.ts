@@ -1,3 +1,5 @@
+// @ts-shebang
+import minimist
 import getPippedInput from "../_libs/getPippedInput";
 import loadFile from "../_libs/loadFile";
 

@@ -1,2 +1,2 @@
-#!/usr/bin/env node
+// @ts-shebang
 console.log(process.arch);

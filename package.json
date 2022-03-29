@@ -4,11 +4,13 @@
   "description": "Group of common linux binaries implemented in typescript",
   "main": "index.js",
   "scripts": {
+    "tsc": "find src -type f -exec sed -i \"1s/\\/\\/\\ \\@ts\\-shebang/\\#\\!\\/usr\\/bin\\/env\\ node/\" {} +;tsc;find src -type f -exec sed -i \"1s/\\#\\!\\/usr\\/bin\\/env\\ node/\\/\\/\\ \\@ts\\-shebang/\" {} +",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "minimist": "^1.2.6"
   },
   "devDependencies": {
     "@types/node": "^16.11.10",
