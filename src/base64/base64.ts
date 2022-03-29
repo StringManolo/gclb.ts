@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-import minimist from "minimist";
 import getPippedInput from "../_libs/getPippedInput";
 import loadFile from "../_libs/loadFile";
 

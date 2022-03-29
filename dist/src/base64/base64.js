@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -12,10 +13,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const minimist_1 = __importDefault(require("minimist"));
 const getPippedInput_1 = __importDefault(require("../_libs/getPippedInput"));
 const loadFile_1 = __importDefault(require("../_libs/loadFile"));
-const argv = (0, minimist_1.default)(process.argv.slice(2));
+const argv = minimist(process.argv.slice(2));
 const argc = process.argv.length - 2;
 const usage = `Usage: base64 [-d] [FILE]
 
