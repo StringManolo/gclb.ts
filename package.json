@@ -11,8 +11,11 @@
   "license": "ISC",
   "devDependencies": {
     "@types/minimist": "^1.2.2",
-    "@types/node": "^16.11.10",
+    "@types/node": "^16.11.26",
     "minimist": "^1.2.6",
     "typescript": "^4.5.2"
+  },
+  "dependencies": {
+    "simpleargumentsparser": "^1.0.4"
   }
 }

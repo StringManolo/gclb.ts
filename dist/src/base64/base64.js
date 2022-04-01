@@ -13,11 +13,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const minimist_1 = __importDefault(require("minimist"));
-const getPippedInput_1 = __importDefault(require("../_libs/getPippedInput"));
 const loadFile_1 = __importDefault(require("../_libs/loadFile"));
-const argv = (0, minimist_1.default)(process.argv.slice(2));
-const argc = process.argv.length - 2;
+const simpleargumentsparser_1 = __importDefault(require("simpleargumentsparser"));
 const usage = `Usage: base64 [-d] [FILE]
 
 Base64 encode or decode FILE to standard output
@@ -25,11 +22,12 @@ Base64 encode or decode FILE to standard output
 -d      Decode data
 `;
 (() => __awaiter(void 0, void 0, void 0, function* () {
-    const pippedInput = yield (0, getPippedInput_1.default)();
-    if (!argc) {
-        // Encode pippedInput
-        if (pippedInput) {
-            const encoded = Buffer.from(pippedInput).toString("base64");
+    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k;
+    const cli = yield (0, simpleargumentsparser_1.default)();
+    if (!cli.argc) {
+        // Encode cli.p
+        if (cli.p) {
+            const encoded = Buffer.from(cli.p).toString("base64");
             console.log(encoded);
         }
         else {
@@ -38,45 +36,44 @@ Base64 encode or decode FILE to standard output
             console.log(usage);
         }
     }
-    else if (argc === 1 && (argv === null || argv === void 0 ? void 0 : argv.d)) {
-        // Decode pippedInput
-        const decoded = Buffer.from(pippedInput, "base64").toString("ascii");
+    else if (cli.argc === 1 && ((_a = cli.s) === null || _a === void 0 ? void 0 : _a.d)) {
+        // Decode cli.p
+        const decoded = Buffer.from(cli.p, "base64").toString("ascii");
         console.log(decoded);
     }
-    else if (argc === 2 && (argv === null || argv === void 0 ? void 0 : argv.d)) {
+    else if (cli.argc === 2 && ((_b = cli.s) === null || _b === void 0 ? void 0 : _b.d)) {
         // Decode from file even if pipped input
-        if (argv.d !== true) {
-            const fileContent = (0, loadFile_1.default)(argv.d);
+        if (cli.s.d !== true) {
+            const fileContent = (0, loadFile_1.default)(cli.s.d);
             if (fileContent) {
                 const decoded = Buffer.from(fileContent, "base64").toString("ascii");
                 // TODO: check if content can be decoded
                 console.log(decoded);
             }
             else {
-                console.log(`base64: ${argv.d}: No such file or directory`);
+                console.log(`base64: ${cli.s.d}: No such file or directory`);
             }
         }
         else {
-            const fileContent = (0, loadFile_1.default)(argv === null || argv === void 0 ? void 0 : argv._[0]);
+            const fileContent = (0, loadFile_1.default)((_d = (_c = cli.o) === null || _c === void 0 ? void 0 : _c[0]) === null || _d === void 0 ? void 0 : _d[0]);
             if (fileContent) {
                 const decoded = Buffer.from(fileContent, "base64").toString("ascii");
                 // TODO: check if content can be decoded
                 console.log(decoded);
             }
             else {
-                console.log(`base64: ${argv._[0]}: No such file or directory`);
+                console.log(`base64: ${(_f = (_e = cli.o) === null || _e === void 0 ? void 0 : _e[0]) === null || _f === void 0 ? void 0 : _f[0]}: No such file or directory`);
             }
         }
     }
-    else if (argc === 1) {
-        console.log("Encode file...");
-        const fileContent = (0, loadFile_1.default)(argv === null || argv === void 0 ? void 0 : argv._[0]);
+    else if (cli.argc === 1) {
+        const fileContent = (0, loadFile_1.default)((_h = (_g = cli.o) === null || _g === void 0 ? void 0 : _g[0]) === null || _h === void 0 ? void 0 : _h[0]);
         if (fileContent) {
             const encoded = Buffer.from(fileContent).toString("base64");
             console.log(encoded);
         }
         else {
-            console.log(`base64: ${argv === null || argv === void 0 ? void 0 : argv._[0]}: No such file or directory`);
+            console.log(`base64: ${(_k = (_j = cli.o) === null || _j === void 0 ? void 0 : _j[0]) === null || _k === void 0 ? void 0 : _k[0]}: No such file or directory`);
         }
     }
     else {
